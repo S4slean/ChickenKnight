@@ -73,16 +73,16 @@ public class Character : MonoBehaviour
 	protected virtual void Update()
 	{
 		if (rb.velocity == Vector2.zero) isMoving = false;
-		if (onGround && !wasOnGround) _availableJumps = nbrOfJumps;
-		HandleJump();
+
+		DetectCollision();
 		ApplyFallSpeed();
+		HandleJump();
+
+		rb.velocity = _movementDir;
+
+		wasOnGround = onGround;
 	}
 
-	protected virtual void LateUpdate()
-	{
-		DetectCollision();
-		rb.velocity = _movementDir;
-	}
 
 	private void DetectCollision()
 	{
@@ -98,6 +98,7 @@ public class Character : MonoBehaviour
 		}
 
 		onGround = collisionFlags.below;
+		if (onGround && !wasOnGround) _availableJumps = nbrOfJumps;
 
 		CheckSides();
 	}
@@ -146,8 +147,8 @@ public class Character : MonoBehaviour
 	{
 		if (canJump && _availableJumps > 0)
 		{
-			Debug.Log("Jump");
 			isJumping = true;
+			_availableJumps--;
 			_jumpTimeTracker = 0;
 		}
 	}
