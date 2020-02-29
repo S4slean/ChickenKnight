@@ -72,7 +72,7 @@ public class Character : MonoBehaviour
 
 	protected virtual void Update()
 	{
-		if (rb.velocity == Vector2.zero) isMoving = false;
+		if (rb.velocity.x == 0) isMoving = false;
 
 		DetectCollision();
 		ApplyFallSpeed();
