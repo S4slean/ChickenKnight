@@ -22,7 +22,7 @@ public class Character : MonoBehaviour
 	[Header("References")]
 	public Transform self;
 	public Rigidbody2D rb;
-	public BoxCollider2D box2D;
+	public CapsuleCollider2D box2D;
 
 
 	[Header("Movement Stats")]

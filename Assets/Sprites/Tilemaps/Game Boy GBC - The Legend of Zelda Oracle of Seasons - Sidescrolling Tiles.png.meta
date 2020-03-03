@@ -38,6 +38,18 @@ TextureImporter:
       213: 2552357059246741282
     second: Game Boy GBC - The Legend of Zelda Oracle of Seasons - Sidescrolling
       Tiles_8
+  - first:
+      213: 1350903314006237476
+    second: Game Boy GBC - The Legend of Zelda Oracle of Seasons - Sidescrolling
+      Tiles_9
+  - first:
+      213: 7151376880001827304
+    second: Game Boy GBC - The Legend of Zelda Oracle of Seasons - Sidescrolling
+      Tiles_10
+  - first:
+      213: -4088069522482416146
+    second: Game Boy GBC - The Legend of Zelda Oracle of Seasons - Sidescrolling
+      Tiles_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -99,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -111,7 +123,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,7 +135,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -135,7 +147,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
