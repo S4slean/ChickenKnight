@@ -29,11 +29,12 @@ public class Character : MonoBehaviour
 	public AnimationCurve accelerationCurve;
 	[Range(0, 1000)] public float maxSpeed;
 	[Range(0, 10)] public float timeToMaxSpeed;
+	public AnimationCurve fallCurve;
+	[Range(0.05f, 10)] public float timeToMaxFallSpeed = 0.5f;
 	public float fallSpeed = 9.81f;
 
 	[Header("Jump Stats")]
 	public AnimationCurve jumpCurve;
-	[Range(0, 10000)] public float jumpPower;
 	[Range(0, 10)] public float jumpDuration;
 	[Range(0, 10)] public int nbrOfJumps = 1;
 
@@ -50,7 +51,7 @@ public class Character : MonoBehaviour
 	public bool isJumping = false;
 	public CollisionFlag collisionFlags;
 
-
+	private float _fallTimeTracker;
 	private float _accelerationTimetracker;
 	private float _jumpTimeTracker;
 	private int _availableJumps;
@@ -86,7 +87,7 @@ public class Character : MonoBehaviour
 
 	private void DetectCollision()
 	{
-		if (rb.velocity.y < 0)
+		if (rb.velocity.y <= 0)
 		{
 			collisionFlags.above = false;
 			collisionFlags.below = CheckGround();
@@ -98,7 +99,11 @@ public class Character : MonoBehaviour
 		}
 
 		onGround = collisionFlags.below;
-		if (onGround && !wasOnGround) _availableJumps = nbrOfJumps;
+		if (onGround && !wasOnGround)
+		{
+			_availableJumps = nbrOfJumps;
+			_fallTimeTracker = 0;
+		}
 
 		CheckSides();
 	}
@@ -150,6 +155,7 @@ public class Character : MonoBehaviour
 			isJumping = true;
 			_availableJumps--;
 			_jumpTimeTracker = 0;
+			_fallTimeTracker = timeToMaxFallSpeed;
 		}
 	}
 	private void HandleJump()
@@ -157,7 +163,7 @@ public class Character : MonoBehaviour
 		if (isJumping)
 		{
 			_jumpTimeTracker += Time.deltaTime;
-			_movementDir.y = jumpCurve.Evaluate(_jumpTimeTracker / jumpDuration) * jumpPower;
+			_movementDir.y = jumpCurve.Evaluate(_jumpTimeTracker / jumpDuration) * fallSpeed;
 
 			if (_jumpTimeTracker > jumpDuration)
 			{
@@ -169,6 +175,10 @@ public class Character : MonoBehaviour
 	private void ApplyFallSpeed()
 	{
 		if(!onGround && !isJumping)
-			_movementDir += Vector2.down * fallSpeed;
+		{
+			_fallTimeTracker += Time.deltaTime;
+			_movementDir += Vector2.down * -fallCurve.Evaluate(_fallTimeTracker/timeToMaxFallSpeed) * fallSpeed;
+		}
+
 	}
 }

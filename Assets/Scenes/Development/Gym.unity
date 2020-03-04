@@ -1313,6 +1313,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7731321159659138368, guid: ba0b3fae1d4cd7e4d89b62435c703cc7,
+        type: 3}
+      propertyPath: attackBufferDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7731321159659138371, guid: ba0b3fae1d4cd7e4d89b62435c703cc7,
         type: 3}
       propertyPath: m_LocalPosition.x
